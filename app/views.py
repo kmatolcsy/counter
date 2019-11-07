@@ -1,5 +1,5 @@
 from flask import request, jsonify, render_template
-
+from bson.json_util import dumps
 from app import app, db
 
 
@@ -16,5 +16,5 @@ def set_counter():
 
 @app.route('/get')
 def get_counter():
-    data = db.counter.find()
+    data = dumps(db.counter.find())
     return jsonify(status=True, data=data)
