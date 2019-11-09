@@ -18,6 +18,19 @@
         <div class="container">
           <a class="navbar-brand" href="#">Ilongga</a>
 
+          <!-- Radio buttons -->
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+              <input type="radio" name="options" value="counter" autocomplete="off" checked> All
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" value="alive" autocomplete="off"> Future
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" value="expired" autocomplete="off"> Past
+            </label>
+          </div>
+
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
             Add new
