@@ -1,6 +1,6 @@
 import requests
 from flask import request, jsonify, render_template
-from bson.json_util import dumps
+from bson.json_util import dumps, ObjectId
 
 from app import app, db
 
@@ -18,11 +18,13 @@ def set_counter():
     response = requests.get(f'https://api.unsplash.com/search/photos?client_id={access_key}&query={entry.get("city")}')
     results = response.json().get('results')
 
-    entry.update({
-        "src": results[0]["urls"]["regular"],
-        "usr": results[0]["user"]["name"],
-        "deleted": False
-    })
+    if results:
+        entry.update({
+            "src": results[0]["urls"]["regular"],
+            "usr": results[0]["user"]["name"]
+        })
+
+    entry["deleted"] = False
 
     db.counter.insert_one(entry)
     return jsonify(status=True), 201
@@ -30,5 +32,16 @@ def set_counter():
 
 @app.route('/get')
 def get_counter():
-    data = dumps(db.counter.find())
-    return jsonify(status=True, data=data)
+    data = dumps(db.counter.find({"deleted": False}))
+    
+    return jsonify(status=True, data=data), 200
+
+
+@app.route('/del', methods=['DELETE'])
+def del_counter():
+    filters = request.json
+    filters['_id'] =ObjectId(filters['_id'])
+    print(db.counter.find_one(filters))
+    ans = db.counter.update_one(filters, {"$set": {"deleted": True}})
+    print(ans)
+    return jsonify(status=True), 200
