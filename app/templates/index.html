@@ -64,34 +64,50 @@
     </div>
 
     <header>
-      <nav class="navbar fixed-top navbar-light bg-light">
+      <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
         <div class="container">
+
           <a class="navbar-brand" href="#">Ilongga</a>
 
-          <!-- Radio buttons -->
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary active">
-              <input type="radio" name="options" value="counter" autocomplete="off" checked> All
-            </label>
-            <label class="btn btn-secondary">
-              <input type="radio" name="options" value="alive" autocomplete="off"> Future
-            </label>
-            <label class="btn btn-secondary">
-              <input type="radio" name="options" value="expired" autocomplete="off"> Past
-            </label>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="white-space"></li>
+              <li class="nav-item">
+
+                <!-- Radio buttons -->
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary active">
+                    <input type="radio" name="options" value="counter" autocomplete="off" checked> All
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="options" value="alive" autocomplete="off"> Future
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="options" value="expired" autocomplete="off"> Past
+                  </label>
+                </div>
+
+              </li>
+              <li class="white-space"></li>
+              <li class="nav-item">
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
+                  Add new
+                </button>
+                <span class="btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-danger">
+                    <input type="checkbox" id="delete" autocomplete="off"> Delete
+                  </label>
+                </span>
+
+              </li>
+            </ul>
           </div>
 
-          <!-- Button trigger modal -->
-          <div>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
-              Add new
-            </button>
-            <span class="btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-danger">
-                <input type="checkbox" id="delete" autocomplete="off"> Delete
-              </label>
-            </span>
-          </div>
         </div>
       </nav>
     </header>

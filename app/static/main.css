@@ -4,6 +4,18 @@ img {
     object-fit: cover;
 }
 
+ul {
+    width: 100%;
+}
+
+li.white-space {
+    margin: auto;
+}
+
+li.nav-item {
+    margin: 2px;
+}
+
 main {
     height: calc(100vh - 3.5rem);
     margin-top: 3.5rem;
