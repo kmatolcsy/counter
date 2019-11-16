@@ -1,3 +1,4 @@
+import random
 import requests
 from flask import request, jsonify, render_template
 from bson.json_util import dumps, ObjectId
@@ -17,11 +18,12 @@ def set_counter():
     access_key = 'INSERT_KEY_HERE'
     response = requests.get(f'https://api.unsplash.com/search/photos?client_id={access_key}&query={entry.get("city")}')
     results = response.json().get('results')
+    index = random.randrange(len(results))
 
     if results:
         entry.update({
-            "src": results[0]["urls"]["regular"],
-            "usr": results[0]["user"]["name"]
+            "src": results[index]["urls"]["regular"],
+            "usr": results[index]["user"]["name"]
         })
 
     entry["deleted"] = False
@@ -32,7 +34,7 @@ def set_counter():
 
 @app.route('/get')
 def get_counter():
-    data = dumps(db.counter.find({"deleted": False}))
+    data = dumps(db.counter.find({"deleted": False}).sort("date", -1))
     
     return jsonify(status=True, data=data), 200
 
