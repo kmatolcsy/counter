@@ -1,3 +1,19 @@
+main {
+    background-image: linear-gradient(to bottom right, aliceblue, lightskyblue);
+    min-height: calc(100vh - 3.5rem);
+    margin-top: 3.5rem;
+    padding: 1rem 0
+}
+
+footer {
+    background-color: rgb(248, 249, 250);
+    padding: 0.5rem
+}
+
+nav {
+    opacity: 0.975;
+}
+
 img {
     height: 25vh;
     width: 100%;
@@ -14,17 +30,6 @@ li.white-space {
 
 li.nav-item {
     margin: 2px;
-}
-
-main {
-    height: calc(100vh - 3.5rem);
-    margin-top: 3.5rem;
-    padding: 1rem 0
-}
-
-footer {
-    background-color: rgb(248, 249, 250);
-    padding: 0.5rem
 }
 
 .delete{
